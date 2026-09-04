@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="color-scheme" content="light dark">
+<title>Scripts - 2nul's script repository</title>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<style>
+:root {
+  --gradient-main: linear-gradient(135deg, #667eea, #764ba2);
+  --text: #1B1F23;
+  --muted: #6A737D;
+  --border: #E1E4E8;
+  --card: #FFFFFF;
+  --bg: #F6F8FA;
+  --transition: 0.2s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--text);
+  background: var(--bg);
+  font-size: 14px;
+  font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  max-width: 680px;
+  margin: 28px auto;
+  padding: 0 16px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4px;
+  margin-bottom: 28px;
+}
+
+.navbar-brand {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  text-decoration: none;
+  background: var(--gradient-main);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+.navbar-brand:hover {
+  opacity: 0.75;
+}
+
+nav {
+  display: flex;
+  gap: 6px;
+}
+
+nav a {
+  color: var(--text);
+  text-decoration: none;
+  padding: 7px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+  transition: var(--transition);
+}
+
+nav a:hover {
+  background: #F0F2F4;
+  border-color: #D0D7DE;
+}
+
+.scripts {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--card);
+  box-shadow: 0 2px 5px rgba(27, 31, 35, 0.04);
+  transition: transform var(--transition),
+              box-shadow var(--transition),
+              border-color var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: #D0D7DE;
+  box-shadow: 0 8px 20px rgba(27, 31, 35, 0.08);
+}
+
+.script-logo {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #F6F8FA;
+}
+
+.card-content {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+
+.script-title {
+  font-size: 16px;
+  font-weight: 650;
+  margin: 0 0 2px;
+  color: var(--text);
+}
+
+.game {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0;
+}
+
+.copy-btn {
+  flex-shrink: 0;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  background: #1B1F23;
+  padding: 8px 13px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  transition: var(--transition);
+}
+
+.copy-btn:hover {
+  background: #30363D;
+  transform: translateY(-1px);
+}
+
+.copy-btn:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 520px) {
+  body {
+    margin-top: 20px;
+  }
+
+  .navbar {
+    margin-bottom: 20px;
+  }
+
+  .card {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .script-logo {
+    width: 54px;
+    height: 54px;
+    border-radius: 10px;
+  }
+
+  .script-title {
+    font-size: 14px;
+  }
+
+  .game {
+    font-size: 12px;
+  }
+
+  .copy-btn {
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #C9D1D9;
+    --muted: #8B949E;
+    --border: #30363D;
+    --card: #161B22;
+    --bg: #0D1117;
+  }
+
+  nav a {
+    color: var(--text);
+  }
+
+  nav a:hover {
+    background: #21262D;
+    border-color: #484F58;
+  }
+
+  .card {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  }
+
+  .card:hover {
+    border-color: #484F58;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  }
+
+  .script-logo {
+    border-color: var(--border);
+    background: #0D1117;
+  }
+
+  .copy-btn {
+    background: #F0F2F4;
+    color: #1B1F23;
+  }
+
+  .copy-btn:hover {
+    background: #FFFFFF;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+  <a href="/" class="navbar-brand">
+    &lt;/&gt; 2nul
+  </a>
+
+  <nav>
+    <a href="/">Home</a>
+    <a href="#">Scripts</a>
+  </nav>
+</div>
+
+<div class="scripts">
+
+  <div class="card">
+    <img
+      class="script-logo"
+      src="https://scriptblox.com/images/script/0-1760880701392.jpg"
+      alt="Lennon Hub Logo"
+    >
+
+    <div class="card-content">
+      <h2 class="script-title">Lennon Hub - Steal an Egg</h2>
+      <p class="game">Steal an Egg</p>
+    </div>
+
+    <button
+      class="copy-btn"
+      onclick="copyScript('loadstring(game:HttpGet(&quot;https://rbsc.pages.dev/LennonHub-StealAnEgg.txt&quot;))()')"
+    >
+      Copy
+    </button>
+  </div>
+
+  <div class="card">
+    <img
+      class="script-logo"
+      src="https://stealaneggscripts.com/assets/miranda-hub-steal-an-egg-script-gui.webp"
+      alt="Miranda Hub Logo"
+    >
+
+    <div class="card-content">
+      <h2 class="script-title">Miranda Hub - Steal an Egg</h2>
+      <p class="game">Steal an Egg</p>
+    </div>
+
+    <button
+      class="copy-btn"
+      onclick="copyScript('loadstring(game:HttpGet(&quot;https://rbsc.pages.dev/MirandaHub-StealAnEgg.txt&quot;))()')"
+    >
+      Copy
+    </button>
+  </div>
+
+</div>
+
+<script>
+function copyScript(script) {
+  navigator.clipboard.writeText(script).then(function() {
+    Swal.fire({
+      icon: 'success',
+      title: 'Copied!',
+      text: 'The script has been copied to your clipboard !',
+      confirmButtonText: 'Ok',
+      confirmButtonColor: '#1B1F23'
+    });
+  });
+}
+</script>
+
+</body>
+</html>
