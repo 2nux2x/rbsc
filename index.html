@@ -1,87 +1,227 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light dark">
-<title>2nul's script repository</title>
 
-<style type="text/css">
+<title>2nux2x's script repository</title>
+
+<style>
+:root {
+  --bg: #f6f8fa;
+  --surface: #ffffff;
+  --text: #1b1f23;
+  --text-2: #57606a;
+  --text-3: #8c959f;
+  --border: #e1e4e8;
+  --border-hover: #d0d7de;
+  --nav-hover: #f0f2f4;
+  --shadow: 0 1px 3px rgba(27, 31, 35, 0.04),
+             0 8px 24px rgba(27, 31, 35, 0.04);
+  --radius: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  color: #1B1F23;
-  background: #F6F8FA;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: var(--text);
+  background: var(--bg);
+
+  font-family: -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  max-width: 620px;
-  margin: 28px auto;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrapper {
+  width: min(640px, calc(100% - 32px));
+  margin: 32px auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 24px;
+}
+
+.brand {
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+}
+
+.nav a {
+  color: var(--text);
+  text-decoration: none;
+
+  padding: 6px 12px;
+
+  border: 1px solid var(--border);
+  border-radius: 6px;
+
+  background: var(--surface);
+
+  font-size: 13px;
+  font-weight: 500;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.nav a:hover {
+  background: var(--nav-hover);
+  border-color: var(--border-hover);
+}
+
+.nav a.active {
+  background: var(--nav-hover);
+  border-color: var(--border-hover);
+  font-weight: 600;
+}
+
+.home-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 32px 24px;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+
+  background: var(--surface);
+  box-shadow: var(--shadow);
+
   text-align: center;
 }
 
-h2 {
-  font-size: 20px;
-  margin-bottom: 0;
+.avatar {
+  width: 120px;
+  height: 120px;
+
+  object-fit: cover;
+
+  border-radius: 12px;
+  border: 1px solid var(--border);
+
+  background: var(--bg);
+
+  margin-bottom: 20px;
 }
 
-p {
-  margin-top: 0;
+.home-card h1 {
+  margin: 0 0 6px;
+
+  color: var(--text);
+
+  font-size: 22px;
+  font-weight: 650;
+
+  letter-spacing: -0.2px;
 }
 
-.icons {
+.home-card p {
+  margin: 0;
+
+  color: var(--text-2);
+
+  font-size: 13.5px;
+}
+
+
+.footer {
+  margin-top: 24px;
+  padding-top: 16px;
+
+  border-top: 1px solid var(--border);
+
+  color: var(--text-3);
+
+  font-size: 12px;
+
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin: 20px 28px 0;
-}
-
-nav a {
-  color: #1B1F23;
+.footer a {
+  color: var(--text-2);
   text-decoration: none;
-  padding: 8px 14px;
-  border: 1px solid #E1E4E8;
-  border-radius: 6px;
-  background: white;
-  transition: background 0.15s, border-color 0.15s;
 }
 
-nav a:hover {
-  background: #F0F2F4;
-  border-color: #D0D7DE;
+.footer a:hover {
+  text-decoration: underline;
 }
 
-.box {
-  border: 1px solid #E1E4E8;
-  background: white;
-  padding: 24px;
-  margin: 28px;
+
+@media (max-width: 580px) {
+  .wrapper {
+    margin: 20px auto;
+  }
+
+  .header {
+    margin-bottom: 20px;
+  }
+
+  .home-card {
+    padding: 28px 18px;
+  }
+
+  .avatar {
+    width: 96px;
+    height: 96px;
+  }
+
+  .home-card h1 {
+    font-size: 20px;
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
-    color: #C9D1D9;
-    background: #0D1117;
-  }
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --text: #c9d1d9;
+    --text-2: #8b949e;
+    --text-3: #484f58;
+    --border: #30363d;
+    --border-hover: #484f58;
+    --nav-hover: #21262d;
 
-  nav a {
-    color: #C9D1D9;
-    border-color: #30363D;
-    background: #161B22;
-  }
-
-  nav a:hover {
-    background: #21262D;
-    border-color: #484F58;
-  }
-
-  .box {
-    border-color: #30363D;
-    background: #161B22;
+    --shadow:
+      0 1px 3px rgba(0, 0, 0, 0.2),
+      0 8px 24px rgba(0, 0, 0, 0.2);
   }
 }
 </style>
@@ -89,20 +229,52 @@ nav a:hover {
 
 <body>
 
-    <div class="icons">
-        <img src="https://avatars.githubusercontent.com/u/322348305?v=4"
-             style="width: 28%; height: auto;" />
-    </div>
+<div class="wrapper">
 
-    <nav>
-        <a href="/">Home</a>
-        <a href="/scripts.html">Scripts</a>
+  <header class="header">
+
+    <a href="/" class="brand">2nu2x</a>
+
+    <nav class="nav">
+      <a href="/" class="active">Home</a>
+      <a href="/scripts.html">Scripts</a>
     </nav>
 
-    <div class="box">
-        <h2>This is 2nul's script repository</h2>
-        <span>There is nothing here!</span>
-    </div>
+  </header>
+
+
+  <main class="home-card">
+
+    <img
+      class="avatar"
+      src="//avatars.githubusercontent.com/u/324786510?s=200&v=4"
+      alt="2nu2x teaM 's avatar"
+    >
+
+    <h1>This is 2nu2x's script repository</h1>
+
+    <p>There is nothing here!</p>
+
+  </main>
+
+
+  <footer class="footer">
+
+    <span>
+      pro max footer :) - &copy; 2026 Rbsc -
+      <a
+        href="//github.com/2nux2x"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        2nux2x
+      </a>
+      !!
+    </span>
+
+  </footer>
+
+</div>
 
 </body>
 </html>

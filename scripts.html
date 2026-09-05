@@ -1,22 +1,31 @@
+<!--du an kinh khung nhat the gioi da duoc khanh thanh-->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light dark">
-<title>Scripts - 2nul's script repository</title>
+<title>Scripts - 2nu2x team</title>
+<link href="/assets/css/s.style.css" rel="stylesheet" type="text/css">
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <style>
 :root {
-  --gradient-main: linear-gradient(135deg, #667eea, #764ba2);
-  --text: #1B1F23;
-  --muted: #6A737D;
-  --border: #E1E4E8;
-  --card: #FFFFFF;
-  --bg: #F6F8FA;
-  --transition: 0.2s ease;
+  --bg: #f6f8fa;
+  --surface: #ffffff;
+  --text: #1b1f23;
+  --text-2: #57606a;
+  --text-3: #8c959f;
+  --border: #e1e4e8;
+  --border-hover: #d0d7de;
+  --nav-hover: #f0f2f4;
+  --shadow: 0 1px 3px rgba(27, 31, 35, 0.04), 0 8px 24px rgba(27, 31, 35, 0.04);
+  --radius: 8px;
+  --button-bg: #f6f8fa;
+  --button-hover: #f3f4f6;
+  --button-active: #ebecf0;
+  --green: #2ea043;
 }
 
 * {
@@ -24,213 +33,239 @@
 }
 
 body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: var(--text);
   background: var(--bg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  max-width: 680px;
-  margin: 28px auto;
-  padding: 0 16px;
+  -webkit-font-smoothing: antialiased;
 }
 
-.navbar {
+.wrapper {
+  width: min(640px, calc(100% - 32px));
+  margin: 32px auto;
   display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 4px;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
-.navbar-brand {
-  font-size: 22px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
+.brand {
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 650;
   text-decoration: none;
-  background: var(--gradient-main);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+}
+
+.nav {
   display: flex;
-  align-items: center;
   gap: 8px;
-  transition: var(--transition);
+  margin: 0;
 }
 
-.navbar-brand:hover {
-  opacity: 0.75;
-}
-
-nav {
-  display: flex;
-  gap: 6px;
-}
-
-nav a {
+.nav a {
   color: var(--text);
   text-decoration: none;
-  padding: 7px 12px;
+  padding: 6px 12px;
   border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--card);
-  transition: var(--transition);
+  border-radius: 6px;
+  background: var(--surface);
+  font-weight: 500;
+  font-size: 13px;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
-nav a:hover {
-  background: #F0F2F4;
-  border-color: #D0D7DE;
+.nav a:hover {
+  background: var(--nav-hover);
+  border-color: var(--border-hover);
 }
 
-.scripts {
+.nav a.active {
+  background: var(--nav-hover);
+  border-color: var(--border-hover);
+  font-weight: 600;
+}
+
+.page-header {
+  margin-bottom: 20px;
+}
+
+.page-header h1 {
+  font-size: 22px;
+  font-weight: 650;
+  margin: 0 0 4px;
+  letter-spacing: -0.2px;
+}
+
+.page-header p {
+  margin: 0;
+  color: var(--text-2);
+  font-size: 13.5px;
+}
+
+.script-list {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.card {
-  display: flex;
+.script {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
   align-items: center;
-  gap: 15px;
-  padding: 14px;
+  gap: 14px;
+  padding: 16px;
   border: 1px solid var(--border);
-  border-radius: 14px;
-  background: var(--card);
-  box-shadow: 0 2px 5px rgba(27, 31, 35, 0.04);
-  transition: transform var(--transition),
-              box-shadow var(--transition),
-              border-color var(--transition);
-}
-
-.card:hover {
-  transform: translateY(-2px);
-  border-color: #D0D7DE;
-  box-shadow: 0 8px 20px rgba(27, 31, 35, 0.08);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
 }
 
 .script-logo {
-  width: 64px;
-  height: 64px;
-  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
   object-fit: cover;
-  border-radius: 12px;
   border: 1px solid var(--border);
-  background: #F6F8FA;
+  background: var(--bg);
 }
 
-.card-content {
-  flex: 1;
+.script-info {
   min-width: 0;
-  text-align: left;
 }
 
 .script-title {
-  font-size: 16px;
-  font-weight: 650;
   margin: 0 0 2px;
   color: var(--text);
+  font-size: 14px;
+  font-weight: 650;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.game {
-  color: var(--muted);
-  font-size: 13px;
+.script-game {
+  margin: 0 0 4px;
+  color: var(--text-2);
+  font-size: 12.5px;
+}
+
+.script-game b {
+  color: var(--text);
+  font-weight: 550;
+}
+
+.script-meta {
   margin: 0;
+  color: var(--text-3);
+  font-size: 11.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.meta-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--text-3);
+}
+
+.updated-date {
+  color: var(--text-2);
 }
 
 .copy-btn {
-  flex-shrink: 0;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  background: #1B1F23;
-  padding: 8px 13px;
+  padding: 6px 14px;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--button-bg);
   cursor: pointer;
-  font-size: 13px;
-  font-weight: 600;
-  font-family: inherit;
-  transition: var(--transition);
+  font-size: 12.5px;
+  font-weight: 550;
+  transition: background 0.15s ease, border-color 0.15s ease;
 }
 
 .copy-btn:hover {
-  background: #30363D;
-  transform: translateY(-1px);
+  background: var(--button-hover);
+  border-color: var(--border-hover);
 }
 
 .copy-btn:active {
-  transform: translateY(0);
+  background: var(--button-active);
 }
 
-@media (max-width: 520px) {
-  body {
-    margin-top: 20px;
-  }
+.copy-btn.copied {
+  background: var(--green);
+  border-color: var(--green);
+  color: #ffffff;
+}
 
-  .navbar {
-    margin-bottom: 20px;
-  }
+.footer {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  color: var(--text-3);
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  .card {
-    padding: 12px;
+.footer a {
+  color: var(--text-2);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 580px) {
+  .script {
+    grid-template-columns: 40px minmax(0, 1fr);
     gap: 12px;
+    padding: 12px;
   }
-
+  
   .script-logo {
-    width: 54px;
-    height: 54px;
-    border-radius: 10px;
-  }
-
-  .script-title {
-    font-size: 14px;
-  }
-
-  .game {
-    font-size: 12px;
+    width: 40px;
+    height: 40px;
   }
 
   .copy-btn {
-    padding: 7px 10px;
-    font-size: 12px;
+    grid-column: 2;
+    justify-self: start;
+    padding: 5px 12px;
   }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #C9D1D9;
-    --muted: #8B949E;
-    --border: #30363D;
-    --card: #161B22;
-    --bg: #0D1117;
-  }
-
-  nav a {
-    color: var(--text);
-  }
-
-  nav a:hover {
-    background: #21262D;
-    border-color: #484F58;
-  }
-
-  .card {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-  }
-
-  .card:hover {
-    border-color: #484F58;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-  }
-
-  .script-logo {
-    border-color: var(--border);
-    background: #0D1117;
-  }
-
-  .copy-btn {
-    background: #F0F2F4;
-    color: #1B1F23;
-  }
-
-  .copy-btn:hover {
-    background: #FFFFFF;
+    --bg: #0d1117;
+    --surface: #161b22;
+    --text: #c9d1d9;
+    --text-2: #8b949e;
+    --text-3: #484f58;
+    --border: #30363d;
+    --border-hover: #484f58;
+    --nav-hover: #21262d;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 8px 24px rgba(0, 0, 0, 0.2);
+    --button-bg: #21262d;
+    --button-hover: #30363d;
+    --button-active: #282e33;
+    --green: #2ea043;
   }
 }
 </style>
@@ -238,74 +273,80 @@ nav a:hover {
 
 <body>
 
-<div class="navbar">
-  <a href="/" class="navbar-brand">
-    &lt;/&gt; 2nul
-  </a>
+<div class="wrapper">
 
-  <nav>
-    <a href="/">Home</a>
-    <a href="#">Scripts</a>
-  </nav>
+  <header class="header">
+    <a href="/" class="brand">2nu2x</a>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="#" class="active">Scripts</a>
+    </nav>
+  </header>
+
+  <section class="page-header">
+    <h1>Scripts</h1>
+    <p>Roblox scripts maintained in the 2nux2x repository</p>
+  </section>
+
+  <main class="script-list">
+
+    <article class="script">
+      <img
+        class="script-logo"
+        src="https://i.postimg.cc/kGqDzLM4/PSHbyn-S7dd6NQy2id-GUj-PT.png"
+        alt="Lennon Hub"
+      >
+      <div class="script-info">
+        <h2 class="script-title">Lennon Hub — Steal an Egg</h2>
+        <p class="script-game">game : <b>Steal an Egg</b></p>
+        <p class="script-meta">
+          Updated
+          <span class="meta-dot"></span>
+          <span class="updated-date" data-updated="2026-09-05">2026-09-05</span>
+        </p>
+      </div>
+      <button
+        class="copy-btn"
+        onclick="copy_script('loadstring(game:HttpGet(&quot;https://rbsc.pages.dev/LennonHub-StealAnEgg.txt&quot;))()', this)"
+      >
+        Copy
+      </button>
+    </article>
+
+    <article class="script">
+      <img
+        class="script-logo"
+        src="https://i.postimg.cc/DzGZZ78S/Miranda-Hub-Script-1024x1024.webp"
+        alt="Miranda Hub"
+      >
+      <div class="script-info">
+        <h2 class="script-title">Miranda Hub - Steal an Egg</h2>
+        <p class="script-game">game : <b>Steal an Egg</b></p>
+        <p class="script-meta">
+          Updated
+          <span class="meta-dot"></span>
+          <span class="updated-date" data-updated="2026-09-04">2026-09-04</span>
+        </p>
+      </div>
+      <button
+        class="copy-btn"
+        onclick="copy_script('loadstring(game:HttpGet(&quot;https://rbsc.pages.dev/MirandaHub-StealAnEgg.txt&quot;))()', this)"
+      >
+        Copy
+      </button>
+    </article>
+
+  </main>
+
+  <footer class="footer">
+    <span>pro max footer :) - &copy; 2026 Rbsc - <a href="//github.com/2nux2x" target="_blank">2nux2x</a> !!</span> 
+    <!--a: thêm copyright vô đây roi nha @@-->
+    <!-- b : cho may cai assets ra rieng ddi-->
+    <!--a:uuuuuu-->
+  </footer>
+
 </div>
 
-<div class="scripts">
-
-  <div class="card">
-    <img
-      class="script-logo"
-      src="https://scriptblox.com/images/script/0-1760880701392.jpg"
-      alt="Lennon Hub Logo"
-    >
-
-    <div class="card-content">
-      <h2 class="script-title">Lennon Hub - Steal an Egg</h2>
-      <p class="game">Steal an Egg</p>
-    </div>
-
-    <button
-      class="copy-btn"
-      onclick="copyScript('loadstring(game:HttpGet(&quot;https://rbsc.pages.dev/LennonHub-StealAnEgg.txt&quot;))()')"
-    >
-      Copy
-    </button>
-  </div>
-
-  <div class="card">
-    <img
-      class="script-logo"
-      src="https://stealaneggscripts.com/assets/miranda-hub-steal-an-egg-script-gui.webp"
-      alt="Miranda Hub Logo"
-    >
-
-    <div class="card-content">
-      <h2 class="script-title">Miranda Hub - Steal an Egg</h2>
-      <p class="game">Steal an Egg</p>
-    </div>
-
-    <button
-      class="copy-btn"
-      onclick="copyScript('loadstring(game:HttpGet(&quot;https://rbsc.pages.dev/MirandaHub-StealAnEgg.txt&quot;))()')"
-    >
-      Copy
-    </button>
-  </div>
-
-</div>
-
-<script>
-function copyScript(script) {
-  navigator.clipboard.writeText(script).then(function() {
-    Swal.fire({
-      icon: 'success',
-      title: 'Copied!',
-      text: 'The script has been copied to your clipboard !',
-      confirmButtonText: 'Ok',
-      confirmButtonColor: '#1B1F23'
-    });
-  });
-}
-</script>
-
+<script src="/assets/js/s.js"></script>
 </body>
 </html>
